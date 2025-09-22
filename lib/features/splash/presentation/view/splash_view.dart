@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruit/core/app_constant/app_constant.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
+import 'package:fruit/core/services/shared_prefrences.dart';
 import 'package:fruit/core/utils/app_images.dart';
 
 class SplashView extends StatefulWidget {
@@ -12,12 +14,19 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState() {
-   Future.delayed(Duration(seconds: 3),
-   () => Navigator.pushReplacementNamed(context, OnGenerateRout.onBoardingView,),
-   );
+  void initState()  {
+    bool isViewed =
+         SharedPrefrencesService.getBool(AppConstant.onBoardingKey);
+    Future.delayed(
+      Duration(seconds: 3),
+      () => Navigator.pushReplacementNamed(
+        context,
+        isViewed ? OnGenerateRout.homeView : OnGenerateRout.onBoardingView,
+      ),
+    );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +43,9 @@ class _SplashViewState extends State<SplashView> {
             ],
           ),
           SvgPicture.asset(Assets.imagesSvgFruitLogoSplash),
-          SvgPicture.asset(Assets.imagesSvgFooterLogo,
-          fit: BoxFit.fill,
+          SvgPicture.asset(
+            Assets.imagesSvgFooterLogo,
+            fit: BoxFit.fill,
           ),
         ],
       ),

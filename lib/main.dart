@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
+import 'package:fruit/core/services/shared_prefrences.dart';
 // import 'package:flutter_localization/flutter_localization.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await SharedPrefrencesService.initialize();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('ar')],
@@ -21,11 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: ThemeData(
+        fontFamily: 'Cairo',
         useMaterial3: true,
       ),
       onGenerateRoute: OnGenerateRout.onGenerateRoute,
