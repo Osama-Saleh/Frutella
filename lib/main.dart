@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
+import 'package:fruit/core/utils/app_text_styles.dart';
 // import 'package:flutter_localization/flutter_localization.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,18 +24,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-        fontFamily: 'Cairo',
-        useMaterial3: true,
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => MaterialApp(
+        
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          fontFamily: 'Cairo',
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            color: Colors.white,
+            titleTextStyle: AppTextStyles.bold19.copyWith(
+              color: Colors.black,
+              fontFamily: 'Cairo',
+            ),
+          ),
+          useMaterial3: true,
+        ),
+        onGenerateRoute: OnGenerateRout.onGenerateRoute,
+        initialRoute: OnGenerateRout.splashRoutName,
       ),
-      onGenerateRoute: OnGenerateRout.onGenerateRoute,
-      initialRoute: OnGenerateRout.splashRoutName,
     );
   }
 }

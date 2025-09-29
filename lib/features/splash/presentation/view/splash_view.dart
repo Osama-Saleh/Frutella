@@ -14,14 +14,13 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState()  {
-    bool isViewed =
-         SharedPrefrencesService.getBool(AppConstant.onBoardingKey);
+  void initState() {
+    bool isViewed = SharedPrefrencesService.getBool(AppConstant.onBoardingKey);
     Future.delayed(
       Duration(seconds: 3),
       () => Navigator.pushReplacementNamed(
         context,
-        isViewed ? OnGenerateRout.homeView : OnGenerateRout.onBoardingView,
+        isViewed ? OnGenerateRout.loginView : OnGenerateRout.onBoardingView,
       ),
     );
     super.initState();

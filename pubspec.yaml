@@ -38,6 +38,7 @@ dependencies:
   easy_localization: ^3.0.8
   dots_indicator: ^4.0.1 
   shared_preferences: ^2.5.3
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/svg/
     - assets/images/on_boarding/
     - assets/lang/
+    - assets/images/svg/auth/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

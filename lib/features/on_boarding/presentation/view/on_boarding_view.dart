@@ -37,8 +37,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Column(
-                children: [
+      child: Column(
+        children: [
           Expanded(
             child: PageView(
               controller: _pageController,
@@ -47,7 +47,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   background: Assets.imagesOnBoardingBackgroundPage1,
                   image: Assets.imagesOnBoardingFruitBasketPage1,
                   title: Text.rich(TextSpan(children: [
-                    TextSpan(text: 'مرحبًا بك في ', style: AppTextStyles.bold23),
+                    TextSpan(
+                        text: 'مرحبًا بك في ', style: AppTextStyles.bold23),
                     TextSpan(
                         text: 'Fruit',
                         style: AppTextStyles.bold23
@@ -101,12 +102,15 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               height: 80,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, OnGenerateRout.homeView);
-                  SharedPrefrencesService.setBool(AppConstant.onBoardingKey, true);
+                  Navigator.pushReplacementNamed(
+                      context, OnGenerateRout.loginView);
+                  SharedPrefrencesService.setBool(
+                      AppConstant.onBoardingKey, true);
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Color(0xff1B5E37),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))
-                ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff1B5E37),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16))),
                 child: Text(
                   'ابدأ الان',
                   style: TextStyle(color: Colors.white),
@@ -114,8 +118,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
             ),
           ),
-                ],
-              ),
-        ));
+        ],
+      ),
+    ));
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit/core/app_constant/app_constant.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
-import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
 
 class CustomPage extends StatelessWidget {
@@ -48,7 +47,7 @@ class CustomPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                        Navigator.pushReplacementNamed(context, OnGenerateRout.homeView);
+                        Navigator.pushReplacementNamed(context, OnGenerateRout.loginView);
                         SharedPrefrencesService.setBool(AppConstant.onBoardingKey, true);
                       },
                   child: Visibility(

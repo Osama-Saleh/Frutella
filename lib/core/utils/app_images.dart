@@ -22,6 +22,18 @@ class Assets {
   /// assets/images/on_boarding/fruit_basket_page2.svg
   static const String imagesOnBoardingFruitBasketPage2 = "assets/images/on_boarding/fruit_basket_page2.svg";
 
+  /// Assets for imagesSvgAuthApple
+  /// assets/images/svg/auth/apple.svg
+  static const String imagesSvgAuthApple = "assets/images/svg/auth/apple.svg";
+
+  /// Assets for imagesSvgAuthFacebook
+  /// assets/images/svg/auth/facebook.svg
+  static const String imagesSvgAuthFacebook = "assets/images/svg/auth/facebook.svg";
+
+  /// Assets for imagesSvgAuthGoogle
+  /// assets/images/svg/auth/google.svg
+  static const String imagesSvgAuthGoogle = "assets/images/svg/auth/google.svg";
+
   /// Assets for imagesSvgFooterLogo
   /// assets/images/svg/footer_logo.svg
   static const String imagesSvgFooterLogo = "assets/images/svg/footer_logo.svg";
