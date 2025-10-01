@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
-// import 'package:flutter_localization/flutter_localization.dart';
+import 'package:fruit/firebase_options.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   await EasyLocalization.ensureInitialized();
   await SharedPrefrencesService.initialize();
   runApp(
