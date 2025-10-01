@@ -11,6 +11,7 @@ import 'package:fruit/features/auth/presentation/widgets/social_media.dart';
 class LogInView extends StatelessWidget {
   LogInView({super.key});
   final TextEditingController? emailController = TextEditingController();
+  final TextEditingController? passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,7 @@ class LogInView extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
               ),
               CustomTextFormFiled(
-                controller: emailController,
+                controller: passController,
                 hintText: 'كلمة المرور',
                 obscureText: true,
                 suffixIcon: Icon(Icons.visibility_off_outlined),
