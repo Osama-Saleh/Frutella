@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
@@ -17,14 +18,12 @@ class LogInView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'تسجيل دخول',
-        leading: IconButton(
-            onPressed: () {}, icon: Icon(Icons.arrow_back_ios_rounded)),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            spacing: 16,
+            spacing: 16.h,
             children: [
               CustomTextFormFiled(
                 controller: emailController,
@@ -35,7 +34,7 @@ class LogInView extends StatelessWidget {
                 controller: passController,
                 hintText: 'كلمة المرور',
                 obscureText: true,
-                suffixIcon: Icon(Icons.visibility_off_outlined),
+                suffixIcon: Icon(Icons.visibility_off_outlined,size: 20.sp,),
               ),
               Align(
                   alignment: AlignmentDirectional.topEnd,
@@ -44,12 +43,12 @@ class LogInView extends StatelessWidget {
                     style:
                         AppTextStyles.bold13.copyWith(color: Color(0xff2D9F5D)),
                   )),
-                  SizedBox(height: 16,),
+                  SizedBox(height: 2.h,),
               CustomElevatedButton(
                 title: 'تسجيل دخول',
                 onPressed: () {},
               ),
-                  SizedBox(height: 16,),
+                  SizedBox(height: 0.5.h,),
         
               Text.rich(
                 TextSpan(
@@ -71,7 +70,7 @@ class LogInView extends StatelessWidget {
                   ],
                 ),
               ),
-                  SizedBox(height: 16,),
+                  SizedBox(height: 0.01.h,),
         
               Row(
                 spacing: 10,
@@ -80,8 +79,8 @@ class LogInView extends StatelessWidget {
                     child: Divider(
                       color: Color(0xffDDDFDF),
                       thickness: 1,
-                      endIndent: 10,
-                      indent: 10,
+                      endIndent: 10.w,
+                      indent: 10.w,
                     ),
                   ),
                   Text('أو', style: AppTextStyles.semiBold16),
@@ -89,8 +88,8 @@ class LogInView extends StatelessWidget {
                     child: Divider(
                       color: Color(0xffDDDFDF),
                       thickness: 1,
-                      endIndent: 10,
-                      indent: 10,
+                      endIndent: 10.w,
+                      indent: 10.w,
                     ),
                   ),
                 ],
