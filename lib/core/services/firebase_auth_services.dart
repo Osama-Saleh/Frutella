@@ -9,7 +9,7 @@ class FirebaseAuthServices {
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      ); 
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
