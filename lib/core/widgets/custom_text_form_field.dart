@@ -9,6 +9,7 @@ class CustomTextFormFiled extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String hintText;
+  final Function(String?)? onSaved;
 
   const CustomTextFormFiled({
     super.key,
@@ -18,6 +19,7 @@ class CustomTextFormFiled extends StatelessWidget {
     this.obscureText,
     this.suffixIcon,
     this.prefixIcon,
+    this.onSaved,
     required this.hintText,
   });
 
@@ -25,7 +27,14 @@ class CustomTextFormFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: validator,
+      // validator: validator,
+      validator: (value){
+        if(value == null || value.isEmpty){
+          return 'هذا الحقل مطلوب';
+        }
+        return null;
+      },
+      onSaved: onSaved,
       keyboardType: keyboardType,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(

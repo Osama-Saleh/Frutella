@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
+import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
 import 'package:fruit/firebase_options.dart';
@@ -13,6 +14,7 @@ void main()async {
 );
   await EasyLocalization.ensureInitialized();
   await SharedPrefrencesService.initialize();
+  setupGetit();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('ar')],
