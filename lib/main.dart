@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit/core/helper/custom_bloc_observer.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
@@ -12,6 +14,9 @@ void main()async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
+  // create it to help in debugging at Bloc Obsever and get data when state change
+  // expamle in signup state when state change it will print the state data
+  // Bloc.observer = CustomBlocObserver();
   await EasyLocalization.ensureInitialized();
   await SharedPrefrencesService.initialize();
   setupGetit();

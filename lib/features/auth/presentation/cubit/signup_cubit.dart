@@ -11,6 +11,9 @@ class SignupCubit extends Cubit<SignupState> {
    void changeAutovalidateMode(AutovalidateMode mode) {
     emit(state.copyWith(autovalidateMode: mode));
   }
+  void changePasswordVisibility(){
+    emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
+  }
 
   Future<void> createAccountWithEmailAndPassword({
     required String email,

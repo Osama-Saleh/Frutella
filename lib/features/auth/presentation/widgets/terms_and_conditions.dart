@@ -6,7 +6,9 @@ import 'package:fruit/core/utils/app_text_styles.dart';
 class TermsAndConditions extends StatefulWidget {
   const TermsAndConditions({
     super.key,
+   required this.onChanged,
   });
+final ValueChanged<bool>? onChanged;
 
   @override
   State<TermsAndConditions> createState() => _TermsAndConditionsState();
@@ -24,6 +26,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
           child: InkWell(
             onTap: () {
               isChecked = !isChecked;
+              widget.onChanged?.call(isChecked);
               setState(() {});
             },
             child: AnimatedContainer(

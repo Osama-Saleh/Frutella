@@ -18,6 +18,7 @@ class SignUpView extends StatelessWidget {
   final TextEditingController? mailController = TextEditingController();
   final TextEditingController? passController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late bool isTermsAndConditionsChecked = false;
   // AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
@@ -69,18 +70,29 @@ class SignUpView extends StatelessWidget {
                           CustomTextFormFiled(
                             controller: passController,
                             hintText: 'كلمة المرور',
-                            obscureText: true,
-                            suffixIcon: Icon(
-                              Icons.visibility_off_outlined,
+                            obscureText: !state.isPasswordVisible,
+                            suffixIcon: IconButton(onPressed: () {
+                              context.read<SignupCubit>().changePasswordVisibility();
+                            }, icon: Icon(
+                             state.isPasswordVisible ? Icons.visibility : Icons.visibility_off_outlined,
                               size: 20.sp,
-                            ),
+                            )),
                           ),
-                          TermsAndConditions(),
+                          TermsAndConditions(
+                            onChanged: (value) {
+                              isTermsAndConditionsChecked = value;
+                            },
+                          ),
                           CustomElevatedButton(
                             title: 'إنشاء حساب جديد',
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
+                                if(!isTermsAndConditionsChecked){
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('يجب الموافقة على الشروط والأحكام'))
+                                  );
+                                  return;
+                                }
                                 context
                                     .read<SignupCubit>()
                                     .createAccountWithEmailAndPassword(
