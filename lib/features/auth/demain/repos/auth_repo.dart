@@ -9,4 +9,9 @@ abstract class AuthRepo {
     required String password,
     required String? name,
   });
+
+  Future<Either<Failures, UserEntity>> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
 }

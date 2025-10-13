@@ -13,6 +13,4 @@ void setupGetit() {
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
     firebaseAuthServices: getIt<FirebaseAuthServices>(),
   ));
-
-
 }
