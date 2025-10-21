@@ -46,4 +46,26 @@ class FirebaseAuthServices {
       throw CustomException(message: e.toString());
     }
   }
+
+  Future<void> deleteUser() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        await user.delete();
+      } else {
+        throw CustomException(message: 'لا يوجد مستخدم مسجل الدخول');
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        throw CustomException(
+            message:
+                'يجب إعادة تسجيل الدخول قبل حذف الحساب. يرجى تسجيل الدخول مرة أخرى والمحاولة.');
+      }
+      throw CustomException(message: e.message ?? 'حدث خطأ ما');
+    } catch (e) {
+      throw CustomException(message: e.toString());
+    }
+  }
+
 }
