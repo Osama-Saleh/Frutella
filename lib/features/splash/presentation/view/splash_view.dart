@@ -20,7 +20,8 @@ class _SplashViewState extends State<SplashView> {
       Duration(seconds: 3),
       () => Navigator.pushReplacementNamed(
         context,
-        isViewed ? OnGenerateRout.loginView : OnGenerateRout.onBoardingView,
+         OnGenerateRout.homeView,
+        // isViewed ? OnGenerateRout.signIn : OnGenerateRout.onBoardingView,
       ),
     );
     super.initState();

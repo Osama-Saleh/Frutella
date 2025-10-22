@@ -103,7 +103,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacementNamed(
-                      context, OnGenerateRout.loginView);
+                      context, OnGenerateRout.signIn);
                   SharedPrefrencesService.setBool(
                       AppConstant.onBoardingKey, true);
                 },

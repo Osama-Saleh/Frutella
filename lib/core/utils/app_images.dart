@@ -6,6 +6,26 @@ class Assets {
   /// assets/images/app_image.png
   static const String imagesAppImage = "assets/images/app_image.png";
 
+  /// Assets for imagesHomeBackgroundFeatersItem
+  /// assets/images/home/background_featers_item.svg
+  static const String imagesHomeBackgroundFeatersItem = "assets/images/home/background_featers_item.svg";
+
+  /// Assets for imagesHomeNotification
+  /// assets/images/home/notification.svg
+  static const String imagesHomeNotification = "assets/images/home/notification.svg";
+
+  /// Assets for imagesHomeProfileImage
+  /// assets/images/home/profile_image.png
+  static const String imagesHomeProfileImage = "assets/images/home/profile_image.png";
+
+  /// Assets for imagesHomeSearch
+  /// assets/images/home/search.svg
+  static const String imagesHomeSearch = "assets/images/home/search.svg";
+
+  /// Assets for imagesHomeSearchFilter
+  /// assets/images/home/search_filter.svg
+  static const String imagesHomeSearchFilter = "assets/images/home/search_filter.svg";
+
   /// Assets for imagesOnBoardingBackgroundPage1
   /// assets/images/on_boarding/background_page1.svg
   static const String imagesOnBoardingBackgroundPage1 = "assets/images/on_boarding/background_page1.svg";

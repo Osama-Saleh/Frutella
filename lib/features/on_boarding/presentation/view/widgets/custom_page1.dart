@@ -47,7 +47,7 @@ class CustomPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                        Navigator.pushReplacementNamed(context, OnGenerateRout.loginView);
+                        Navigator.pushReplacementNamed(context, OnGenerateRout.signIn);
                         SharedPrefrencesService.setBool(AppConstant.onBoardingKey, true);
                       },
                   child: Visibility(

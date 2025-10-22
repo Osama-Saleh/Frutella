@@ -13,8 +13,8 @@ import 'package:fruit/features/auth/demain/repos/auth_repo.dart';
 import 'package:fruit/features/auth/presentation/cubit/singin_cubit/signin_cubit.dart';
 import 'package:fruit/features/auth/presentation/widgets/social_media.dart';
 
-class LogInView extends StatelessWidget {
-  LogInView({super.key});
+class SingInView extends StatelessWidget {
+  SingInView({super.key});
   final TextEditingController? emailController = TextEditingController();
   final TextEditingController? passController = TextEditingController();
   @override
@@ -29,9 +29,10 @@ class LogInView extends StatelessWidget {
                   backgroundColor: Colors.green,
                   )
                 );
-              }else if(state.error != null && state.error!.isNotEmpty){
+                Navigator.pushNamedAndRemoveUntil(context, OnGenerateRout.homeView, (route) => false);
+              }else if(state.error.isNotEmpty){
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(state.error!))
+                  SnackBar(content: Text(state.error))
                 );
               }
         },
