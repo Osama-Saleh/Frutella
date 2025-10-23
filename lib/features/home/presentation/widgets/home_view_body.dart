@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fruit/features/home/presentation/widgets/custom_search_text_form_field.dart';
 import 'package:fruit/features/home/presentation/widgets/feature_item.dart';
+import 'package:fruit/features/home/presentation/widgets/feature_items_list.dart';
 
 class HomeViewBody extends StatelessWidget {
-   HomeViewBody({super.key});
-final TextEditingController? controller = TextEditingController();
+  HomeViewBody({super.key});
+  final TextEditingController? controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -19,13 +20,13 @@ final TextEditingController? controller = TextEditingController();
               spacing: 16.h,
               children: [
                 CustomHomeAppBar(),
-                CustomSearchTextFormField(controller: controller, hintText: 'ابحث عن.......'),
-                FeatureItem(),
-                
+                CustomSearchTextFormField(
+                    controller: controller, hintText: 'ابحث عن.......'),
+                FeatureItemsList(),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
