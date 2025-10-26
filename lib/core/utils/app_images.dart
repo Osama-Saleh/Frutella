@@ -10,9 +10,33 @@ class Assets {
   /// assets/images/home/background_featers_item.svg
   static const String imagesHomeBackgroundFeatersItem = "assets/images/home/background_featers_item.svg";
 
+  /// Assets for imagesHomeHome
+  /// assets/images/home/home.svg
+  static const String imagesHomeHome = "assets/images/home/home.svg";
+
+  /// Assets for imagesHomeHomeActive
+  /// assets/images/home/homeActive.svg
+  static const String imagesHomeHomeActive = "assets/images/home/homeActive.svg";
+
+  /// Assets for imagesHomeMyAccount
+  /// assets/images/home/myAccount.svg
+  static const String imagesHomeMyAccount = "assets/images/home/myAccount.svg";
+
+  /// Assets for imagesHomeMyAccountActive
+  /// assets/images/home/myAccountActive.svg
+  static const String imagesHomeMyAccountActive = "assets/images/home/myAccountActive.svg";
+
   /// Assets for imagesHomeNotification
   /// assets/images/home/notification.svg
   static const String imagesHomeNotification = "assets/images/home/notification.svg";
+
+  /// Assets for imagesHomeProductActive
+  /// assets/images/home/productActive.svg
+  static const String imagesHomeProductActive = "assets/images/home/productActive.svg";
+
+  /// Assets for imagesHomeProducts
+  /// assets/images/home/products.svg
+  static const String imagesHomeProducts = "assets/images/home/products.svg";
 
   /// Assets for imagesHomeProfileImage
   /// assets/images/home/profile_image.png
@@ -25,6 +49,14 @@ class Assets {
   /// Assets for imagesHomeSearchFilter
   /// assets/images/home/search_filter.svg
   static const String imagesHomeSearchFilter = "assets/images/home/search_filter.svg";
+
+  /// Assets for imagesHomeShoppingCart
+  /// assets/images/home/shopping-cart.svg
+  static const String imagesHomeShoppingCart = "assets/images/home/shopping-cart.svg";
+
+  /// Assets for imagesHomeShoppingCartActive
+  /// assets/images/home/shopping-cart_active.svg
+  static const String imagesHomeShoppingCartActive = "assets/images/home/shopping-cart_active.svg";
 
   /// Assets for imagesOnBoardingBackgroundPage1
   /// assets/images/on_boarding/background_page1.svg
