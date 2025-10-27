@@ -67,5 +67,7 @@ class FirebaseAuthServices {
       throw CustomException(message: e.toString());
     }
   }
-
+  bool isUserLoggedIn() {
+    return FirebaseAuth.instance.currentUser!=null;
+  }
 }

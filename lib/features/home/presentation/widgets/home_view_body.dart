@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/utils/app_colors.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
 import 'package:fruit/features/home/presentation/widgets/best_seller_widget.dart';
@@ -28,7 +29,10 @@ class HomeViewBody extends StatelessWidget {
                 CustomSearchTextFormField(
                     controller: controller, hintText: 'ابحث عن.......'),
                 FeatureItemsList(),
-                BestSellerWidget(),
+                GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, OnGenerateRout.
+                  bestSaler),
+                  child: BestSellerWidget()),
                 
               ],
             ),

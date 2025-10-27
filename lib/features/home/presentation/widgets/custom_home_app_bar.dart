@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/utils/app_colors.dart';
 import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
@@ -19,13 +21,19 @@ class CustomHomeAppBar extends StatelessWidget {
         height: 45.w,
         fit: BoxFit.fill
       ),
-      trailing: CircleAvatar(
-          radius: 22.r,
-          backgroundColor: Color(0xffEEF8ED),
-          child: SvgPicture.asset(
-            Assets.imagesHomeNotification,
-            width: 25.w,
-          )),
+      trailing: GestureDetector(
+        onTap: ()async {
+          await FirebaseAuth.instance.signOut();
+          Navigator.pushReplacementNamed(context, OnGenerateRout.signIn);
+        },
+        child: CircleAvatar(
+            radius: 22.r,
+            backgroundColor: Color(0xffEEF8ED),
+            child: SvgPicture.asset(
+              Assets.imagesHomeNotification,
+              width: 25.w,
+            )),
+      ),
       title: Text(
         'صباح الخير !..',
         style: AppTextStyles.regular16.copyWith(

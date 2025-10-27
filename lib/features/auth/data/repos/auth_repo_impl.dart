@@ -74,7 +74,7 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<void> addUserData({required UserEntity user,required String docId}) async {
     await firebaseStoreServices.addData(
-        path: BackendEndPoint.addUserPath,docId: docId ,data: user.toMap());
+        path: BackendEndPoint.addUserPath,docId: docId ,data: UserModel.fromEntity(user).toMap());
   }
 
   @override
