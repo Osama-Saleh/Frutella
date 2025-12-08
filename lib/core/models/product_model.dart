@@ -6,7 +6,7 @@ class ProductModel extends ProductInputEntities {
     required super.productName,
     required super.description,
     required super.code,
-    super.image,
+    // super.image,
     required super.price,
     required super.urlImage,
     required super.isFeatureProduct,
@@ -41,7 +41,7 @@ class ProductModel extends ProductInputEntities {
     };
   }
 
-  factory ProductModel.fromjson(Map<String, dynamic> json) {
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       productName: json['productName'],
       description: json['description'],
@@ -57,6 +57,28 @@ class ProductModel extends ProductInputEntities {
       reviews: json['reviews'] != null
           ? (json['reviews'] as List<dynamic>?)
               ?.map((e) => ReviewModel.fromMap(e as Map<String, dynamic>))
+              .toList()
+          : [],
+    );
+  }
+
+  ProductInputEntities toEntity() {
+    return ProductInputEntities(
+      productName: productName,
+      description: description,
+      code: code,
+      price: price,
+      urlImage: urlImage,
+      isFeatureProduct: isFeatureProduct,
+      exprirationMonth: exprirationMonth,
+      isOrganicProduct: isOrganicProduct,
+      numberOfCalories: numberOfCalories,
+      unitCount: unitCount,
+      sellingCount: sellingCount,
+      reviews: reviews != null
+          ? reviews!
+              .map((e) => ReviewModel.fromEntity(e).toMap())
+              .toList()
               .toList()
           : [],
     );

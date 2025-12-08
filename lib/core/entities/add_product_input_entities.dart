@@ -1,12 +1,12 @@
 import 'package:fruit/core/entities/review_entity.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class ProductInputEntities {
   String productName;
   int price;
   String code;
   String description;
-  XFile? image;
+  // XFile? image;
   String? urlImage;
   bool isFeatureProduct;
   int exprirationMonth;
@@ -21,7 +21,7 @@ class ProductInputEntities {
     required this.productName,
     required this.description,
     required this.code,
-    required this.image,
+    // required this.image,
     this.urlImage,
     required this.price,
     required this.isFeatureProduct,

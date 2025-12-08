@@ -89,7 +89,7 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<UserEntity> getUserData({required String uid}) async {
     Map<String, dynamic> userMap =
-        await firebaseStoreServices.getData(BackendEndPoint.getUserPath, uid);
+        await firebaseStoreServices.getData(path: BackendEndPoint.getUserPath, docId: uid);
     return UserModel.fromMap(userMap);
   }
 
