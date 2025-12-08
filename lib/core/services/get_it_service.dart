@@ -3,7 +3,6 @@ import 'package:fruit/core/services/firebase_auth_services.dart';
 import 'package:fruit/core/services/firebase_store_sevices.dart';
 import 'package:fruit/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:fruit/features/auth/demain/repos/auth_repo.dart';
-import 'package:fruit/features/auth/presentation/cubit/signup_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
