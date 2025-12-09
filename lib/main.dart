@@ -9,24 +9,26 @@ import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
 import 'package:fruit/firebase_options.dart';
-void main()async {
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   // create it to help in debugging at Bloc Obsever and get data when state change
   // expamle in signup state when state change it will print the state data
-  // Bloc.observer = CustomBlocObserver();
+  Bloc.observer = CustomBlocObserver();
   await EasyLocalization.ensureInitialized();
   await SharedPrefrencesService.initialize();
   setupGetit();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('ar')],
-      path: 'assets/lang',
-      fallbackLocale: Locale('ar',),
-      child: MyApp()
-    ),
+        supportedLocales: [Locale('ar')],
+        path: 'assets/lang',
+        fallbackLocale: Locale(
+          'ar',
+        ),
+        child: MyApp()),
   );
 }
 
@@ -62,4 +64,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -1,0 +1,24 @@
+import 'package:bloc/bloc.dart';
+import 'package:fruit/core/cubit/products_cubit/products_state.dart';
+import 'package:fruit/core/entities/add_product_input_entities.dart';
+import 'package:fruit/core/repos/product_repo/product_repo.dart';
+
+
+class ProductsCubit extends Cubit<ProductsState> {
+  final ProductRepo productRepo;
+  ProductsCubit(this.productRepo) : super(ProductsState());
+
+
+  Future<void> getProducts()async{
+    emit(state.copyWith(productLoading: true));
+    List<ProductInputEntities> result = await productRepo.getProduct();
+    emit(state.copyWith(productLoading: false, productInputEntities: result));
+  }
+  Future<void> getBestSellingProducts()async{ 
+    emit(state.copyWith(productLoading: true));
+    List<ProductInputEntities> result = await productRepo.getProduct();
+    emit(state.copyWith(productLoading: false, productInputEntities: result));
+  }
+
+
+}
