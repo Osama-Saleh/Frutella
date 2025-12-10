@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit/core/cubit/products_cubit/products_cubit.dart';
 import 'package:fruit/core/repos/product_repo/product_repo.dart';
@@ -28,7 +27,10 @@ class HomeView extends StatelessWidget {
             create: (context) => ProductsCubit(
               getIt.get<ProductRepo>(),
             ),
-            child: HomeViewBody(),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 50),
+              child: HomeViewBody(),
+            ),
           )),
           bottomSheet: CustomBottomNavigationBar(),
         ),

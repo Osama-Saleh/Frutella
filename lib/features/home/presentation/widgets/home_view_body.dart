@@ -3,12 +3,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/cubit/products_cubit/products_cubit.dart';
+import 'package:fruit/core/cubit/products_cubit/products_state.dart';
+import 'package:fruit/core/helper/custom_error_message.dart';
+import 'package:fruit/core/helper/dummy_product.dart';
 import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/features/home/presentation/widgets/best_seller_widget.dart';
 import 'package:fruit/features/home/presentation/widgets/custom_home_app_bar.dart';
 import 'package:fruit/features/home/presentation/widgets/custom_search_text_form_field.dart';
 import 'package:fruit/features/home/presentation/widgets/feature_items_list.dart';
 import 'package:fruit/features/home/presentation/widgets/fruit_items_list.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeViewBody extends StatefulWidget {
   HomeViewBody({super.key});
@@ -32,7 +36,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0).w,
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0).w,
             child: Column(
               spacing: 16.h,
               children: [
@@ -48,7 +52,22 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ),
           ),
         ),
-        FruitItemsList(),
+        BlocBuilder<ProductsCubit, ProductsState>(
+          builder: (context, state) {
+            if (state.productSuccess) {
+              return FruitItemsList(
+                products: getDummyProducts,
+                // products: state.productInputEntities,
+              );
+            } else if (state.productFailure) {
+              return SliverToBoxAdapter(
+                  child: CustomErrorMessage(
+                      errorMessage: 'Failed to load products'));
+            }
+            return Skeletonizer.sliver(
+                child: FruitItemsList(products: getDummyProducts));
+          },
+        ),
       ],
     );
   }

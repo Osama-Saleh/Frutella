@@ -11,16 +11,14 @@ class ProductRepoImpl extends ProductRepo {
   ProductRepoImpl(this.dataBaseServices);
 
   @override
-  Future<List<ProductInputEntities>> getBestSelleingProduct() async {
+  Future<List<ProductInputEntities>?> getBestSelleingProduct() async {
     try {
-      var data = await dataBaseServices.getData(
-          path: BackendEndPoint.getProductPath,
-          query: {
-            'limit': 10,
-            'orderBy': 'sellingCount',
-            'descending': true,
-          }
-          ) as List<Map<String, dynamic>>;
+      var data = await dataBaseServices
+          .getData(path: BackendEndPoint.getProductPath, query: {
+        'limit': 10,
+        'orderBy': 'sellingCount',
+        'descending': true,
+      }) as List<Map<String, dynamic>>;
       //* handle it two ways
       //*================================= 1 ==============================
       // List<ProductInputEntities> productModel =
@@ -38,12 +36,12 @@ class ProductRepoImpl extends ProductRepo {
     } catch (e) {
       print(e);
       SnackBar(content: Text('An error occurred to get products'));
-      return [];
+      return null;
     }
   }
 
   @override
-  Future<List<ProductInputEntities>> getProduct() async {
+  Future<List<ProductInputEntities>?> getProduct() async {
     try {
       var data = await dataBaseServices.getData(
           path: BackendEndPoint.getProductPath) as List<Map<String, dynamic>>;
@@ -64,7 +62,7 @@ class ProductRepoImpl extends ProductRepo {
     } catch (e) {
       print(e);
       SnackBar(content: Text('An error occurred to get products'));
-      return [];
+      return null;
     }
   }
 }

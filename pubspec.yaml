@@ -48,6 +48,7 @@ dependencies:
   cloud_firestore: ^6.0.3
   flutter_svg_provider: ^1.0.7
   equatable: ^2.0.7
+  skeletonizer: ^1.4.3
 
 dev_dependencies:
   flutter_test:
