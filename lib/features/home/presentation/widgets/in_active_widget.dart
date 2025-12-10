@@ -10,13 +10,16 @@ class InActive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          inActiveImage,
-        ),
-      ],
+    return Container(
+      color: Colors.transparent,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            inActiveImage,
+          ),
+        ],
+      ),
     );
   }
 }

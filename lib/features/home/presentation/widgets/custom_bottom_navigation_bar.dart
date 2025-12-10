@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fruit/core/utils/app_colors.dart';
 import 'package:fruit/features/home/domain/entites/buttom_navigation_bar_entites.dart';
 import 'package:fruit/features/home/presentation/navigationbar/navigationbar_cubit.dart';
 import 'package:fruit/features/home/presentation/widgets/active_widget.dart';
@@ -66,5 +64,3 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
   }
 }
-
-

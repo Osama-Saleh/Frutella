@@ -8,19 +8,37 @@ class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this.productRepo) : super(ProductsState());
 
   Future<void> getProducts() async {
-    emit(state.copyWith(productLoading: true));
-    List<ProductInputEntities>? result = await productRepo.getProduct();
-    emit(state.copyWith(productLoading: false, productInputEntities: result));
+    try {
+      emit(state.copyWith(productLoading: true, productSuccess: false));
+      List<ProductInputEntities>? result = await productRepo.getProduct();
+      if (result == null) {
+        emit(state.copyWith(
+            productLoading: false,
+            productFailure: true,
+            productSuccess: false));
+        return;
+      }
+      emit(state.copyWith(
+          productLoading: false,
+          productSuccess: true,
+          productInputEntities: result));
+    } catch (e) {
+      emit(state.copyWith(
+          productLoading: false, productFailure: true, productSuccess: false));
+      print(e);
+    }
   }
 
   Future<void> getBestSellingProducts() async {
     try {
       emit(state.copyWith(productLoading: true, productSuccess: false));
       List<ProductInputEntities>? result = await productRepo.getProduct();
-      if(result == null){
-      emit(state.copyWith(
-          productLoading: false, productFailure: true, productSuccess: false));
-      return;
+      if (result == null) {
+        emit(state.copyWith(
+            productLoading: false,
+            productFailure: true,
+            productSuccess: false));
+        return;
       }
       emit(state.copyWith(
           productLoading: false,

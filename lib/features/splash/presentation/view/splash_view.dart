@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit/core/app_constant/app_constant.dart';
@@ -17,14 +16,14 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   void _initializeApp() async {
     bool isViewed = SharedPrefrencesService.getBool(AppConstant.onBoardingKey);
-   bool isSignIn  = FirebaseAuthServices().isUserLoggedIn();
+    bool isSignIn = FirebaseAuthServices().isUserLoggedIn();
 
     Future.delayed(
       Duration(seconds: 3),
       () => Navigator.pushReplacementNamed(
         context,
         isViewed
-            ? (isSignIn ? OnGenerateRout.homeView : OnGenerateRout.signIn)
+            ? (isSignIn ? OnGenerateRout.homeMainView : OnGenerateRout.signIn)
             : OnGenerateRout.onBoardingView,
       ),
     );

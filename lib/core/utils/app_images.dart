@@ -10,6 +10,10 @@ class Assets {
   /// assets/images/home/background_featers_item.svg
   static const String imagesHomeBackgroundFeatersItem = "assets/images/home/background_featers_item.svg";
 
+  /// Assets for imagesHomeFilter2
+  /// assets/images/home/filter2.svg
+  static const String imagesHomeFilter2 = "assets/images/home/filter2.svg";
+
   /// Assets for imagesHomeHome
   /// assets/images/home/home.svg
   static const String imagesHomeHome = "assets/images/home/home.svg";

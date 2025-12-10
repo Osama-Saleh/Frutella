@@ -12,28 +12,19 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        bottomSheetTheme: BottomSheetThemeData(
-          backgroundColor: Colors.transparent,
-          surfaceTintColor: Colors.transparent,
-        ),
-      ),
-      child: BlocProvider(
-        create: (context) => NavigationbarCubit(),
-        child: Scaffold(
-          body: SafeArea(
-              child: BlocProvider(
-            create: (context) => ProductsCubit(
-              getIt.get<ProductRepo>(),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 50),
-              child: HomeViewBody(),
-            ),
-          )),
-          bottomSheet: CustomBottomNavigationBar(),
-        ),
+    return BlocProvider(
+      create: (context) => NavigationbarCubit(),
+      child: Scaffold(
+        body: SafeArea(
+            child: BlocProvider(
+          create: (context) => ProductsCubit(
+            getIt.get<ProductRepo>(),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 50),
+            child: HomeViewBody(),
+          ),
+        )),
       ),
     );
   }
