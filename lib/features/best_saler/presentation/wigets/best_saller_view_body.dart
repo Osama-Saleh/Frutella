@@ -27,14 +27,16 @@ class BestSallerViewBody extends StatelessWidget {
             child: Column(
               spacing: 16.h,
               children: [
-                BestSalerAppBar(),
+                CustomAppBar(
+                  title: 'الأكثر مبيعًا',
+                ),
                 CustomSearchTextFormField(
                     controller: controller, hintText: 'ابحث عن.......'),
                 // FeatureItemsList(),
-              //   GestureDetector(
-              //       onTap: () =>
-              //           Navigator.pushNamed(context, OnGenerateRout.bestSaler),
-              //       child: BestSellerWidget()),
+                //   GestureDetector(
+                //       onTap: () =>
+                //           Navigator.pushNamed(context, OnGenerateRout.bestSaler),
+                //       child: BestSellerWidget()),
               ],
             ),
           ),
@@ -59,4 +61,3 @@ class BestSallerViewBody extends StatelessWidget {
     );
   }
 }
-

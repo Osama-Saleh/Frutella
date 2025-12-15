@@ -39,7 +39,9 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             child: Column(
               spacing: 16.h,
               children: [
-                BestSalerAppBar(),
+                CustomAppBar(
+                  title: 'المنتجات',
+                ),
                 CustomSearchTextFormField(
                     controller: widget.controller, hintText: 'ابحث عن.......'),
                 BlocBuilder<ProductsCubit, ProductsState>(

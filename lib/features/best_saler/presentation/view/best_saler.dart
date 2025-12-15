@@ -8,13 +8,17 @@ import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/features/best_saler/presentation/wigets/best_saller_view_body.dart';
 
-class BestSalerAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BestSalerAppBar({Key? key}) : super(key: key);
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  final bool? isHaveArrorBack;
+  const CustomAppBar(
+      {Key? key, required this.title, this.isHaveArrorBack = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('الأكثر مبيعًا'),
+      title: Text(title),
       centerTitle: true,
       actions: [
         Container(
@@ -28,28 +32,30 @@ class BestSalerAppBar extends StatelessWidget implements PreferredSizeWidget {
               )),
         )
       ],
-      leading: Center(
-        child: Container(
-          width: 40.w,
-          height: 40.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50.r),
-            border: Border.all(color: Colors.grey.shade300),
-          ),
-          child: Center(
-            child: IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.black,
-                size: 20.sp,
+      leading: isHaveArrorBack == true
+          ? Center(
+              child: Container(
+                width: 40.w,
+                height: 40.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50.r),
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child: Center(
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.black,
+                      size: 20.sp,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
               ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-        ),
-      ),
+            )
+          : null,
     );
   }
 
