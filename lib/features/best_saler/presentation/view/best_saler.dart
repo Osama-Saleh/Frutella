@@ -8,11 +8,15 @@ import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/features/best_saler/presentation/wigets/best_saller_view_body.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarApp extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool? isHaveArrorBack;
-  const CustomAppBar(
-      {Key? key, required this.title, this.isHaveArrorBack = false})
+  final bool? showNotification;
+  const CustomAppBarApp(
+      {Key? key,
+      required this.title,
+      this.isHaveArrorBack = false,
+      this.showNotification = true})
       : super(key: key);
 
   @override
@@ -21,15 +25,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       centerTitle: true,
       actions: [
-        Container(
-          margin: EdgeInsets.only(left: 10.w),
-          child: CircleAvatar(
-              radius: 22.r,
-              backgroundColor: Color(0xffEEF8ED),
-              child: SvgPicture.asset(
-                Assets.imagesHomeNotification,
-                width: 25.w,
-              )),
+        Visibility(
+          visible: showNotification == true,
+          child: Container(
+            margin: EdgeInsets.only(left: 10.w),
+            child: CircleAvatar(
+                radius: 22.r,
+                backgroundColor: Color(0xffEEF8ED),
+                child: SvgPicture.asset(
+                  Assets.imagesHomeNotification,
+                  width: 25.w,
+                )),
+          ),
         )
       ],
       leading: isHaveArrorBack == true

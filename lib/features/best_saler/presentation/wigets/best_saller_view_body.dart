@@ -27,7 +27,7 @@ class BestSallerViewBody extends StatelessWidget {
             child: Column(
               spacing: 16.h,
               children: [
-                CustomAppBar(
+                CustomAppBarApp(
                   title: 'الأكثر مبيعًا',
                 ),
                 CustomSearchTextFormField(

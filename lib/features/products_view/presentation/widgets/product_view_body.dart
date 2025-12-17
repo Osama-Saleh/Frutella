@@ -39,7 +39,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             child: Column(
               spacing: 16.h,
               children: [
-                CustomAppBar(
+                CustomAppBarApp(
                   title: 'المنتجات',
                 ),
                 CustomSearchTextFormField(

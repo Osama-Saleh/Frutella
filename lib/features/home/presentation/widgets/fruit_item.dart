@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/entities/add_product_input_entities.dart';
 import 'package:fruit/core/utils/app_colors.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
+import 'package:fruit/features/card_view/card/card_cubit.dart';
+import 'package:fruit/features/card_view/domain/card_item_entity.dart';
 
 class FruitItem extends StatelessWidget {
   final ProductInputEntities product;
@@ -68,7 +71,15 @@ class FruitItem extends StatelessWidget {
                     radius: 18.r,
                     backgroundColor: AppColors.primaryColor,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CardItemCubit>().addCardItem(
+                          productInputEntities: product
+                            //     cardItemEntity: CardItemEntity(
+                            //   product: product,
+                            //   count: 1,
+                            // )
+                            );
+                      },
                       icon: Icon(
                         Icons.add,
                         color: Colors.white,

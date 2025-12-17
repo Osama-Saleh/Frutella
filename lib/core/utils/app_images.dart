@@ -101,5 +101,9 @@ class Assets {
   /// Assets for imagesSvgPlantLogo
   /// assets/images/svg/plant_logo.svg
   static const String imagesSvgPlantLogo = "assets/images/svg/plant_logo.svg";
+
+  /// Assets for imagesSvgSalla
+  /// assets/images/svg/salla.svg
+  static const String imagesSvgSalla = "assets/images/svg/salla.svg";
 }
 
