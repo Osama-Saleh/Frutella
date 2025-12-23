@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/utils/app_colors.dart';
+import 'package:fruit/features/card_view/card/card_cubit.dart';
 
 class HeaderCardView extends StatelessWidget {
   const HeaderCardView({
@@ -14,7 +16,8 @@ class HeaderCardView extends StatelessWidget {
       color: AppColors.veryLightGreenColor,
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Center(
-        child: Text('لديك 3 منتجات في سله التسوق'),
+        child: Text(
+            'لديك ${context.read<CardItemCubit>().state.cardItemEntitys.length} منتجات في سله التسوق'),
       ),
     );
   }

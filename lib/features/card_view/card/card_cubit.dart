@@ -7,61 +7,84 @@ class CardItemCubit extends Cubit<CardItemState> {
   CardItemCubit() : super(CardItemState());
 
   void addCardItem({required ProductInputEntities productInputEntities}) {
-    print('lol added to cart');
-    if (state.cardItemEntitys.isEmpty) {
-      CardItemEntity cardItemEntity =
-          CardItemEntity(product: productInputEntities, count: 1);
-      state.cardItemEntitys = [...state.cardItemEntitys, cardItemEntity];
-      emit(state.copyWith(cardItemEntitys: state.cardItemEntitys));
-      return;
+    final index = state.cardItemEntitys.indexWhere(
+      (item) => item.product == productInputEntities,
+    );
+    if (index >= 0) {
+      final existing = state.cardItemEntitys[index];
+      final updated = CardItemEntity(
+        product: existing.product,
+        count: existing.count + 1,
+      );
+      final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+        ..[index] = updated;
+      emit(state.copyWith(cardItemEntitys: updatedList));
+      print('increased count to ${updated.count}');
+    } else {
+      final newItem = CardItemEntity(product: productInputEntities, count: 1);
+      final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+        ..add(newItem);
+      emit(state.copyWith(cardItemEntitys: updatedList));
+      print('added new item (count: 1)');
     }
-    state.cardItemEntitys.forEach((element) {
-      if (element.product == productInputEntities) {
-        print('lol exist');
-        int indexProduct = state.cardItemEntitys.indexOf(element);
-        var existingItem = state.cardItemEntitys[indexProduct];
-        var updateProduct = CardItemEntity(
-          product: existingItem.product,
-          count: existingItem.count + 1,
-        );
-        state.cardItemEntitys[indexProduct] = updateProduct;
-        // element.increaseCount();
-        emit(state.copyWith(cardItemEntitys: state.cardItemEntitys));
-      } else {
-        state.cardItemEntitys = [
-          ...state.cardItemEntitys,
-          CardItemEntity(product: productInputEntities, count: 1)
-        ];
-        // or uese this line
-        // final updatedCardItems = List.of(state.cardItemEntitys)..add(cardItemEntity);
-        emit(state.copyWith(cardItemEntitys: state.cardItemEntitys));
-        print('lol not exist');
-      }
-    });
-    // if (state.cardItemEntitys.contains(productInputEntities)) {
-    //   // if (state.cardItemsEntity
-    //   //     .any((item) => item.product.code == cardItemEntity.product.code)) {
-    //   //   final index = state.cardItemsEntity.indexOf(
-    //   //       cardItemEntity.product.code.contains(cardItemEntity.product.code)
-    //   //           ? state.cardItemsEntity.firstWhere(
-    //   //               (item) => item.product.code == cardItemEntity.product.code)
-    //   //           : CardItemEntity(product: cardItemEntity.product));
-    //   //   final existingItem = state.cardItemsEntity[index];
-    //   //   final updatedItem = CardItemEntity(
-    //   //     product: existingItem.product,
-    //   //     count: existingItem.count + cardItemEntity.count,
-    //   //   );
-    //   //   state.cardItemsEntity[index] = updatedItem;
-    //   //   emit(state.copyWith(cardItemsEntity: state.cardItemsEntity));
-    //   //   return;
-    // } else {
-    //   state.productInputEntities = [
-    //     ...state.productInputEntities,
-    //     productInputEntities
-    //   ];
-    //   // or uese this line
-    //   // final updatedCardItems = List.of(state.productInputEntities)..add(cardItemEntity);
-    //   emit(state.copyWith(productInputEntities: state.productInputEntities));
+  }
+void updateCardItem({required ProductInputEntities productInputEntities}) {
+    final index = state.cardItemEntitys.indexWhere(
+      (item) => item.product == productInputEntities,
+    );
+    if (index >= 0) {
+      final existing = state.cardItemEntitys[index];
+      final updated = CardItemEntity(
+        product: existing.product,
+        count: existing.count + 1,
+      );
+      final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+        ..[index] = updated;
+      emit(state.copyWith(isUpdateCard: true));
+    }
+  }
+
+  void decreaseCardItem({required ProductInputEntities productInputEntities}) {
+    final index = state.cardItemEntitys.indexWhere(
+      (item) => item.product == productInputEntities,
+    );
+    if (index >= 0) {
+      final existing = state.cardItemEntitys[index];
+      final updated = CardItemEntity(
+        product: existing.product,
+        count: existing.count - 1,
+      );
+      final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+        ..[index] = updated;
+      emit(state.copyWith(cardItemEntitys: updatedList));
+    }
+  }
+
+  void removeCardItem({required ProductInputEntities productInputEntities}) {
+    state.cardItemEntitys.removeWhere(
+      (item) => item.product == productInputEntities,
+    );
+    emit(state.copyWith(cardItemEntitys: state.cardItemEntitys));
+    // final index = state.cardItemEntitys.indexWhere(
+    //   (item) => item.product == productInputEntities,
+    // );
+    // if (index >= 0) {
+    //   final existing = state.cardItemEntitys[index];
+    //   if (existing.count > 1) {
+    //     final updated = CardItemEntity(
+    //       product: existing.product,
+    //       count: existing.count - 1,
+    //     );
+    //     final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+    //       ..[index] = updated;
+    //     emit(state.copyWith(cardItemEntitys: updatedList));
+    //     print('decreased count to ${updated.count}');
+    //   } else {
+    //     final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
+    //       ..removeAt(index);
+    //     emit(state.copyWith(cardItemEntitys: updatedList));
+    //     print('removed item from cart');
+    //   }
     // }
   }
 }

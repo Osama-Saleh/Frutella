@@ -5,9 +5,10 @@ part 'navigationbar_state.dart';
 
 class NavigationbarCubit extends Cubit<int> {
   NavigationbarCubit() : super(0);
-
+  int index = 0;
   changeIndex(int index) {
-    emit(index);
+    this.index = index;
+    emit(this.index);
   }
   
 }

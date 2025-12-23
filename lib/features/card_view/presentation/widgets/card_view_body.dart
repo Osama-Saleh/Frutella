@@ -37,7 +37,7 @@ class CardViewBody extends StatelessWidget {
                       ),
                 CardItemsList(
                   cardItemEntitys:
-                      context.read<CardItemCubit>().state.cardItemEntitys,
+                      context.watch<CardItemCubit>().state.cardItemEntitys,
                 ),
                 context.read<CardItemCubit>().state.cardItemEntitys.isEmpty
                     ? SliverToBoxAdapter(
@@ -60,7 +60,8 @@ class CardViewBody extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: CustomElevatedButton(
-                    title: 'الدفع  120جنيه',
+                    title:
+                        'الدفع ${context.read<CardItemCubit>().state.cardItemEntitys.fold(0, (sum, item) => sum + item.product.price * item.count)} جنيه',
                     onPressed: () {},
                   ),
                 ))
