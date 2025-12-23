@@ -4,6 +4,7 @@ import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/auth/presentation/view/signup_view.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
 import 'package:fruit/features/card_view/card/card_cubit.dart';
+import 'package:fruit/features/check_order/presentation/view/check_order_view.dart';
 import 'package:fruit/features/home/presentation/navigationbar/navigationbar_cubit.dart';
 import 'package:fruit/features/home/presentation/views/home_main_view.dart';
 import 'package:fruit/features/home/presentation/views/home_view.dart';
@@ -18,6 +19,7 @@ class OnGenerateRout {
   static const String homeView = 'homeView';
   static const String homeMainView = 'homeMainView';
   static const String bestSaler = 'bestSaler';
+  static const String checkOrderView = 'checkOrderView';
   static Route<dynamic> onGenerateRoute(RouteSettings setting) {
     switch (setting.name) {
       case OnGenerateRout.splashRoutName:
@@ -57,6 +59,10 @@ class OnGenerateRout {
       case OnGenerateRout.bestSaler:
         return MaterialPageRoute(
           builder: (context) => BestSaler(),
+        );
+      case OnGenerateRout.checkOrderView:
+        return MaterialPageRoute(
+          builder: (context) => CheckOrderView(),
         );
       default:
         return MaterialPageRoute(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/widgets/custom_elevated_button.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
 import 'package:fruit/features/card_view/card/card_cubit.dart';
@@ -62,7 +63,10 @@ class CardViewBody extends StatelessWidget {
                   child: CustomElevatedButton(
                     title:
                         'الدفع ${context.read<CardItemCubit>().state.cardItemEntitys.fold(0, (sum, item) => sum + item.product.price * item.count)} جنيه',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, OnGenerateRout.checkOrderView);
+                    },
                   ),
                 ))
           ],
