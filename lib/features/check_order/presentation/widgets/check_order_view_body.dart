@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/core/widgets/custom_elevated_button.dart';
-import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
 import 'package:fruit/features/check_order/presentation/module/check_order.dart';
 import 'package:fruit/features/check_order/presentation/widgets/steps_item.dart';
 
@@ -15,6 +14,9 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
   @override
   void initState() {
     pageController = PageController();
+    pageController?.addListener(() {
+      setState(() {});
+    });
     super.initState();
   }
 
@@ -27,9 +29,21 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarApp(
-        title: 'الشحن',
-        showNotification: false,
+      appBar: AppBar(
+        title: Text(pageController!.hasClients
+            ? CheckOrderSteps.checkOrderSteps()[pageController!.page!.toInt()]
+            : CheckOrderSteps.checkOrderSteps()[0]),
+        centerTitle: true,
+        leading: BackButton(
+          onPressed: () {
+            if (pageController!.page == 0) {
+              Navigator.pop(context);
+              return;
+            }
+            pageController!.previousPage(
+                duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+          },
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -61,7 +75,11 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
               ),
               CustomElevatedButton(
                 title: 'التالي',
-                onPressed: () {},
+                onPressed: () {
+                  pageController!.nextPage(
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeInOut);
+                },
               )
             ],
           ),

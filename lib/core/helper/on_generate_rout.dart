@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit/features/address/presentation/view/address_view.dart';
 import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/auth/presentation/view/signup_view.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
@@ -20,6 +21,7 @@ class OnGenerateRout {
   static const String homeMainView = 'homeMainView';
   static const String bestSaler = 'bestSaler';
   static const String checkOrderView = 'checkOrderView';
+  static const String addressView = 'addressView';
   static Route<dynamic> onGenerateRoute(RouteSettings setting) {
     switch (setting.name) {
       case OnGenerateRout.splashRoutName:
@@ -63,6 +65,10 @@ class OnGenerateRout {
       case OnGenerateRout.checkOrderView:
         return MaterialPageRoute(
           builder: (context) => CheckOrderView(),
+        );
+      case OnGenerateRout.addressView:
+        return MaterialPageRoute(
+          builder: (context) => AddressView(),
         );
       default:
         return MaterialPageRoute(

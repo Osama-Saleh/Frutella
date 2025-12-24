@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit/features/address/presentation/view/address_view.dart';
 import 'package:fruit/features/check_order/presentation/widgets/shipping_sections.dart';
 
 class CheckOrderSteps {
@@ -14,7 +15,7 @@ class CheckOrderSteps {
   static List<Widget> checkOrderPages() {
     return [
       ShippingSections(),
-      Text('Address Page'),
+      AddressView(),
       Text('Payment Page'),
       Text('Review Page'),
     ];
