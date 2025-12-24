@@ -32,36 +32,39 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
         showNotification: false,
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              children: List.generate(CheckOrderSteps.checkOrderSteps().length,
-                  (index) {
-                return Expanded(
-                    child: StepsItem(
-                  title: CheckOrderSteps.checkOrderSteps()[index],
-                  index: '${index + 1}',
-                  isActive: index == 0 ? true : false,
-                ));
-              }),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: PageView.builder(
-                  controller: pageController,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return CheckOrderSteps.checkOrderPages()[index];
-                  },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Row(
+                children: List.generate(
+                    CheckOrderSteps.checkOrderSteps().length, (index) {
+                  return Expanded(
+                      child: StepsItem(
+                    title: CheckOrderSteps.checkOrderSteps()[index],
+                    index: '${index + 1}',
+                    isActive: index == 0 ? true : false,
+                  ));
+                }),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: PageView.builder(
+                    controller: pageController,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return CheckOrderSteps.checkOrderPages()[index];
+                    },
+                  ),
                 ),
               ),
-            ),
-            CustomElevatedButton(
-              title: 'التالي',
-              onPressed: () {},
-            )
-          ],
+              CustomElevatedButton(
+                title: 'التالي',
+                onPressed: () {},
+              )
+            ],
+          ),
         ),
       ),
     );
