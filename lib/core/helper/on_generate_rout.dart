@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit/features/address/presentation/view/address_view.dart';
-import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/auth/presentation/view/signup_view.dart';
+import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
 import 'package:fruit/features/card_view/card/card_cubit.dart';
+import 'package:fruit/features/check_order/presentation/view/address_view.dart';
 import 'package:fruit/features/check_order/presentation/view/check_order_view.dart';
+import 'package:fruit/features/check_order/presentation/view/payment_view.dart';
 import 'package:fruit/features/home/presentation/navigationbar/navigationbar_cubit.dart';
 import 'package:fruit/features/home/presentation/views/home_main_view.dart';
 import 'package:fruit/features/home/presentation/views/home_view.dart';
@@ -22,6 +23,7 @@ class OnGenerateRout {
   static const String bestSaler = 'bestSaler';
   static const String checkOrderView = 'checkOrderView';
   static const String addressView = 'addressView';
+  static const String paymentView = 'paymentView';
   static Route<dynamic> onGenerateRoute(RouteSettings setting) {
     switch (setting.name) {
       case OnGenerateRout.splashRoutName:
@@ -69,6 +71,10 @@ class OnGenerateRout {
       case OnGenerateRout.addressView:
         return MaterialPageRoute(
           builder: (context) => AddressView(),
+        );
+      case OnGenerateRout.paymentView:
+        return MaterialPageRoute(
+          builder: (context) => PaymentView(),
         );
       default:
         return MaterialPageRoute(

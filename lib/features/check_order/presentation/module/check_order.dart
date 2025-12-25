@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fruit/features/address/presentation/view/address_view.dart';
+import 'package:fruit/features/check_order/presentation/view/address_view.dart';
+import 'package:fruit/features/check_order/presentation/view/payment_view.dart';
 import 'package:fruit/features/check_order/presentation/widgets/shipping_sections.dart';
 
 class CheckOrderSteps {
@@ -8,7 +9,6 @@ class CheckOrderSteps {
       'الشحن',
       'العنوان',
       'الدفع',
-      'المراجعة',
     ];
   }
 
@@ -16,8 +16,20 @@ class CheckOrderSteps {
     return [
       ShippingSections(),
       AddressView(),
-      Text('Payment Page'),
-      Text('Review Page'),
+      PaymentView(),
     ];
+  }
+
+  static String getTileButtonStep(int index) {
+    switch (index) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع من خلال paypal';
+      default:
+        return 'التالي';
+    }
   }
 }

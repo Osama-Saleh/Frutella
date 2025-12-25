@@ -10,6 +10,7 @@ class ActiveSteps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.check_circle, color: AppColors.primaryColor),
         SizedBox(width: 4.w),

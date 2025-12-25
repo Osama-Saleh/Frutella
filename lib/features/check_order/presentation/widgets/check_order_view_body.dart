@@ -53,12 +53,25 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
               Row(
                 children: List.generate(
                     CheckOrderSteps.checkOrderSteps().length, (index) {
-                  return Expanded(
+                  return Flexible(
+                    child: GestureDetector(
+                      onTap: () {
+                        pageController!.animateToPage(index,
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.easeInOut);
+                      },
                       child: StepsItem(
-                    title: CheckOrderSteps.checkOrderSteps()[index],
-                    index: '${index + 1}',
-                    isActive: index == 0 ? true : false,
-                  ));
+                        title: CheckOrderSteps.checkOrderSteps()[index],
+                        index: '${index + 1}',
+                        isActive: index <=
+                                (pageController!.hasClients
+                                    ? pageController!.page!.toInt()
+                                    : 0)
+                            ? true
+                            : false,
+                      ),
+                    ),
+                  );
                 }),
               ),
               Expanded(
@@ -74,7 +87,10 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
                 ),
               ),
               CustomElevatedButton(
-                title: 'التالي',
+                title: CheckOrderSteps.getTileButtonStep(
+                    pageController!.hasClients
+                        ? pageController!.page!.toInt()
+                        : 0),
                 onPressed: () {
                   pageController!.nextPage(
                       duration: Duration(milliseconds: 300),
