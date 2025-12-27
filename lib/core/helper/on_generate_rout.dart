@@ -49,9 +49,9 @@ class OnGenerateRout {
               BlocProvider<NavigationbarCubit>(
                 create: (context) => NavigationbarCubit(),
               ),
-              BlocProvider<CardItemCubit>(
-                create: (context) => CardItemCubit(),
-              ),
+              // BlocProvider<CardItemCubit>.value(
+              //   value: context.read<CardItemCubit>(),
+              // ),
             ],
             child: HomeMainView(),
           ),

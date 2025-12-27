@@ -62,12 +62,13 @@ class CardViewBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: CustomElevatedButton(
                     title:
-                        'الدفع ${context.read<CardItemCubit>().state.cardItemEntitys.fold(0, (sum, item) => sum + item.product.price * item.count)} جنيه',
-                    onPressed: () {
+                        'الدفع ${context.watch<CardItemCubit>().state.totalPrice} جنيه',
+                   onPressed: () {
                       Navigator.pushNamed(
-                          context, OnGenerateRout.checkOrderView);
+                          context, OnGenerateRout.checkOrderView,
+                          );
                     },
-                  ),
+                  ),  
                 ))
           ],
         ),

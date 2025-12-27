@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit/core/widgets/custom_elevated_button.dart';
 import 'package:fruit/features/check_order/presentation/module/check_order.dart';
+import 'package:fruit/features/check_order/presentation/module/check_order_model.dart';
 import 'package:fruit/features/check_order/presentation/widgets/steps_item.dart';
 
 class CheckOrderViewBody extends StatefulWidget {

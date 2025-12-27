@@ -18,17 +18,28 @@ class CardItemCubit extends Cubit<CardItemState> {
       );
       final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
         ..[index] = updated;
-      emit(state.copyWith(cardItemEntitys: updatedList));
+      emit(state.copyWith(
+          cardItemEntitys: updatedList,
+          totalPrice: updatedList.fold(
+            0,
+            (sum, item) => sum! + item.product.price * item.count,
+          )));
       print('increased count to ${updated.count}');
     } else {
       final newItem = CardItemEntity(product: productInputEntities, count: 1);
       final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
         ..add(newItem);
-      emit(state.copyWith(cardItemEntitys: updatedList));
+      emit(state.copyWith(
+          cardItemEntitys: updatedList,
+          totalPrice: updatedList.fold(
+            0,
+            (sum, item) => sum! + item.product.price * item.count,
+          )));
       print('added new item (count: 1)');
     }
   }
-void updateCardItem({required ProductInputEntities productInputEntities}) {
+
+  void updateCardItem({required ProductInputEntities productInputEntities}) {
     final index = state.cardItemEntitys.indexWhere(
       (item) => item.product == productInputEntities,
     );
@@ -40,7 +51,11 @@ void updateCardItem({required ProductInputEntities productInputEntities}) {
       );
       final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
         ..[index] = updated;
-      emit(state.copyWith(isUpdateCard: true));
+      emit(state.copyWith(isUpdateCard: true, cardItemEntitys: updatedList,
+          totalPrice: updatedList.fold(
+            0,
+            (sum, item) => sum! + item.product.price * item.count,
+          )));
     }
   }
 
@@ -56,7 +71,11 @@ void updateCardItem({required ProductInputEntities productInputEntities}) {
       );
       final updatedList = List<CardItemEntity>.from(state.cardItemEntitys)
         ..[index] = updated;
-      emit(state.copyWith(cardItemEntitys: updatedList));
+      emit(state.copyWith(cardItemEntitys: updatedList,
+          totalPrice: updatedList.fold(
+            0,
+            (sum, item) => sum! + item.product.price * item.count,
+          )));
     }
   }
 
@@ -64,7 +83,12 @@ void updateCardItem({required ProductInputEntities productInputEntities}) {
     state.cardItemEntitys.removeWhere(
       (item) => item.product == productInputEntities,
     );
-    emit(state.copyWith(cardItemEntitys: state.cardItemEntitys));
+    emit(state.copyWith(
+        cardItemEntitys: state.cardItemEntitys,
+        totalPrice: state.cardItemEntitys.fold(
+          0,
+          (sum, item) => sum! + item.product.price * item.count,
+        )));
     // final index = state.cardItemEntitys.indexWhere(
     //   (item) => item.product == productInputEntities,
     // );
@@ -87,4 +111,5 @@ void updateCardItem({required ProductInputEntities productInputEntities}) {
     //   }
     // }
   }
+
 }

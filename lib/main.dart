@@ -8,6 +8,7 @@ import 'package:fruit/core/helper/on_generate_rout.dart';
 import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/core/services/shared_prefrences.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
+import 'package:fruit/features/card_view/card/card_cubit.dart';
 import 'package:fruit/firebase_options.dart';
 
 void main() async {
@@ -41,25 +42,28 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        theme: ThemeData(
-          fontFamily: 'Cairo',
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(
-            color: Colors.white,
-            titleTextStyle: AppTextStyles.bold19.copyWith(
-              color: Colors.black,
-              fontFamily: 'Cairo',
+      builder: (context, child) => BlocProvider<CardItemCubit>(
+        create: (context) => CardItemCubit(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          theme: ThemeData(
+            fontFamily: 'Cairo',
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              color: Colors.white,
+              titleTextStyle: AppTextStyles.bold19.copyWith(
+                color: Colors.black,
+                fontFamily: 'Cairo',
+              ),
             ),
+            useMaterial3: true,
           ),
-          useMaterial3: true,
+          onGenerateRoute: OnGenerateRout.onGenerateRoute,
+          initialRoute: OnGenerateRout.splashRoutName,
         ),
-        onGenerateRoute: OnGenerateRout.onGenerateRoute,
-        initialRoute: OnGenerateRout.splashRoutName,
       ),
     );
   }

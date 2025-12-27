@@ -17,5 +17,8 @@ class CardItemEntity {
   decreaseCount(){
     count--;
   }
+  calculateTotalPriceWithCount(int newCount){
+    return product.price * newCount;
+  }
 
 }
