@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit/features/auth/presentation/view/signup_view.dart';
 import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
-import 'package:fruit/features/card_view/card/card_cubit.dart';
+import 'package:fruit/features/check_order/presentation/cubit/check_order_cubit.dart';
 import 'package:fruit/features/check_order/presentation/view/address_view.dart';
 import 'package:fruit/features/check_order/presentation/view/check_order_view.dart';
 import 'package:fruit/features/check_order/presentation/view/payment_view.dart';
@@ -66,7 +66,10 @@ class OnGenerateRout {
         );
       case OnGenerateRout.checkOrderView:
         return MaterialPageRoute(
-          builder: (context) => CheckOrderView(),
+          builder: (context) => BlocProvider(
+            create: (context) => CheckOrderCubit(),
+            child: CheckOrderView(),
+          ),
         );
       case OnGenerateRout.addressView:
         return MaterialPageRoute(

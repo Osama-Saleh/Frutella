@@ -5,8 +5,10 @@ import 'package:fruit/core/utils/app_colors.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
 
 class SammaryOrder extends StatelessWidget {
+  final double price;
   const SammaryOrder({
     super.key,
+    required this.price,
   });
 
   @override
@@ -41,7 +43,7 @@ class SammaryOrder extends StatelessWidget {
                     style: AppTextStyles.regular13,
                   ),
                   Text(
-                    '150 جنيه',
+                    '$price جنيه',
                     style: AppTextStyles.bold16,
                   ),
                 ],
@@ -62,7 +64,7 @@ class SammaryOrder extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('الكلي', style: AppTextStyles.bold16),
-                  Text('180 جنيه', style: AppTextStyles.bold16),
+                  Text('${price + 30} جنيه', style: AppTextStyles.bold16),
                 ],
               ),
             ],

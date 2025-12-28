@@ -4,10 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruit/core/helper/shape_container.dart';
 import 'package:fruit/core/utils/app_images.dart';
 import 'package:fruit/core/utils/app_text_styles.dart';
+import 'package:fruit/features/check_order/presentation/module/check_order_address_model.dart';
 
 class DeleverLocation extends StatelessWidget {
+  final CheckOrderAddressModel checkOrderAddressModel;
   const DeleverLocation({
     super.key,
+    required this.checkOrderAddressModel,
   });
 
   @override
@@ -24,13 +27,15 @@ class DeleverLocation extends StatelessWidget {
           decoration: ShapeContainer.grayBoxDecoration(),
           padding: EdgeInsets.all(8.h),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 8.w,
             children: [
               SvgPicture.asset(Assets.imagesHomeLocationLogo),
               Text(
-                '123 شارع الفواكه , مدينه نصر',
+                '${checkOrderAddressModel.adress} , ${checkOrderAddressModel.city} , ${checkOrderAddressModel.adressDetails}',
                 style: AppTextStyles.regular13,
               ),
+              Spacer(),
               GestureDetector(
                   onTap: () {},
                   child: Row(

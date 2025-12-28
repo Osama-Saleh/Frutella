@@ -2,23 +2,24 @@ import 'package:fruit/core/entities/add_product_input_entities.dart';
 
 class CardItemEntity {
   final ProductInputEntities product;
-   int count;
+  int count;
 
   CardItemEntity({
-    required this.product,  
-    this.count=0,
+    required this.product,
+    this.count = 0,
   });
 
   num get calculateTotalPrice => product.price * count;
   num get calculateTotalWeight => product.unitCount * count;
-  increaseCount(){
+  increaseCount() {
     count++;
   }
-  decreaseCount(){
+
+  decreaseCount() {
     count--;
   }
-  calculateTotalPriceWithCount(int newCount){
+
+  calculateTotalPriceWithCount(int newCount) {
     return product.price * newCount;
   }
-
 }

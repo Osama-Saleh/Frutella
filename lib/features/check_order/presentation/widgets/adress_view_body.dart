@@ -3,13 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit/core/widgets/custom_text_form_field.dart';
 
 class AddressViewBody extends StatefulWidget {
-  AddressViewBody({super.key});
-
-  @override
-  State<AddressViewBody> createState() => _AddressViewBodyState();
-}
-
-class _AddressViewBodyState extends State<AddressViewBody> {
   TextEditingController? nameController;
 
   TextEditingController? emailController;
@@ -21,14 +14,38 @@ class _AddressViewBodyState extends State<AddressViewBody> {
   TextEditingController? apartmentController;
 
   TextEditingController? phoneController;
+
+  AddressViewBody({
+    super.key,
+    this.nameController,
+    this.emailController,
+    this.addressController,
+    this.cityController,
+    this.apartmentController,
+    this.phoneController,
+  });
+  //    {
+  //   nameController ??= TextEditingController();
+  //   emailController ??= TextEditingController();
+  //   addressController ??= TextEditingController();
+  //   cityController ??= TextEditingController();
+  //   apartmentController ??= TextEditingController();
+  //   phoneController ??= TextEditingController();
+  // }
+
+  @override
+  State<AddressViewBody> createState() => _AddressViewBodyState();
+}
+
+class _AddressViewBodyState extends State<AddressViewBody> {
   @override
   void dispose() {
-    nameController?.dispose();
-    emailController?.dispose();
-    addressController?.dispose();
-    cityController?.dispose();
-    apartmentController?.dispose();
-    phoneController?.dispose();
+    widget.nameController?.dispose();
+    widget.emailController?.dispose();
+    widget.addressController?.dispose();
+    widget.cityController?.dispose();
+    widget.apartmentController?.dispose();
+    widget.phoneController?.dispose();
     super.dispose();
   }
 
@@ -41,18 +58,19 @@ class _AddressViewBodyState extends State<AddressViewBody> {
           children: [
             SizedBox(height: 20.h),
             CustomTextFormFiled(
-                controller: nameController, hintText: 'الاسم كامل'),
+                controller: widget.nameController, hintText: 'الاسم كامل'),
             CustomTextFormFiled(
-                controller: emailController, hintText: 'البريد الإلكتروني'),
+                controller: widget.emailController,
+                hintText: 'البريد الإلكتروني'),
             CustomTextFormFiled(
-                controller: addressController, hintText: 'العنوان'),
+                controller: widget.addressController, hintText: 'العنوان'),
             CustomTextFormFiled(
-                controller: cityController, hintText: 'المدينه'),
+                controller: widget.cityController, hintText: 'المدينه'),
             CustomTextFormFiled(
-                controller: apartmentController,
+                controller: widget.apartmentController,
                 hintText: 'رقم الطابق , رقم الشقه ..'),
             CustomTextFormFiled(
-                controller: phoneController, hintText: 'رقم الهاتف'),
+                controller: widget.phoneController, hintText: 'رقم الهاتف'),
           ],
         ),
       ),
