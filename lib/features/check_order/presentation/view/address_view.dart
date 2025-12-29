@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit/features/check_order/presentation/module/check_order_model.dart';
+import 'package:fruit/features/check_order/presentation/module/check_order_entity.dart';
 import 'package:fruit/features/check_order/presentation/widgets/adress_view_body.dart';
 
 class AddressView extends StatelessWidget {
@@ -14,13 +14,16 @@ class AddressView extends StatelessWidget {
   late TextEditingController? apartmentController;
 
   late TextEditingController? phoneController;
+  late GlobalKey<FormState>? formStateKey;
 
    AddressView({super.key, this.nameController,
     this.emailController,
     this.addressController,
     this.cityController,
     this.apartmentController,
-    this.phoneController,});
+    this.phoneController,
+    this.formStateKey
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +34,7 @@ class AddressView extends StatelessWidget {
       cityController: cityController,
       apartmentController: apartmentController,
       phoneController: phoneController,
+      formStateKey: formStateKey,
     );
   }
 }

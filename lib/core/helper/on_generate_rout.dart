@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit/core/repos/orders/order_repo.dart';
+import 'package:fruit/core/services/get_it_service.dart';
 import 'package:fruit/features/auth/presentation/view/signup_view.dart';
 import 'package:fruit/features/auth/presentation/view/singin_view.dart';
 import 'package:fruit/features/best_saler/presentation/view/best_saler.dart';
@@ -67,7 +69,7 @@ class OnGenerateRout {
       case OnGenerateRout.checkOrderView:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => CheckOrderCubit(),
+            create: (context) => CheckOrderCubit(getIt.get<OrderRepo>()),
             child: CheckOrderView(),
           ),
         );

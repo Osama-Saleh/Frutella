@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit/features/check_order/presentation/module/check_order_model.dart';
+import 'package:fruit/features/check_order/presentation/module/check_order_entity.dart';
 import 'package:fruit/features/check_order/presentation/view/address_view.dart';
 import 'package:fruit/features/check_order/presentation/view/payment_view.dart';
 import 'package:fruit/features/check_order/presentation/widgets/shipping_sections.dart';
@@ -15,13 +15,14 @@ class CheckOrderSteps {
 
   static List<Widget> checkOrderPages({
     ValueChanged<int>? onSelectionChanged,
-    CheckOrderModel? checkOrderModel,
+    CheckOrderEntity? checkOrderEntity,
     TextEditingController? nameController,
     TextEditingController? emailController,
     TextEditingController? addressController,
     TextEditingController? cityController,
     TextEditingController? apartmentController,
     TextEditingController? phoneController,
+    GlobalKey<FormState>? formStateKey,
   }) {
     return [
       ShippingSections(
@@ -34,9 +35,10 @@ class CheckOrderSteps {
         cityController: cityController,
         apartmentController: apartmentController,
         phoneController: phoneController,
+        formStateKey: formStateKey,
       ),
       PaymentView(
-        checkOrderModel: checkOrderModel,
+        checkOrderEntity: checkOrderEntity,
       ),
     ];
   }

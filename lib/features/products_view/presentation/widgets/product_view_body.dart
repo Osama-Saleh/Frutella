@@ -63,7 +63,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
               );
             } else if (state.productFailure) {
               return SliverToBoxAdapter(
-                  child: CustomErrorMessage(
+                  child: ShowErrorMessage(
                       errorMessage: 'Failed to load products'));
             }
             return Skeletonizer.sliver(

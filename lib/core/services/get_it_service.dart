@@ -1,3 +1,5 @@
+import 'package:fruit/core/repos/orders/order_repo.dart';
+import 'package:fruit/core/repos/orders/order_repo_imple.dart';
 import 'package:fruit/core/repos/product_repo/product_repo.dart';
 import 'package:fruit/core/repos/product_repo/product_repo_impl.dart';
 import 'package:fruit/core/services/data_base.dart';
@@ -20,4 +22,7 @@ void setupGetit() {
   ));
   getIt.registerSingleton<ProductRepo>(
       ProductRepoImpl(getIt<DataBaseServices>()));
+      
+  getIt.registerSingleton<OrderRepo>(
+      OrderRepoImple(dataBaseServices: getIt<DataBaseServices>()));
 }

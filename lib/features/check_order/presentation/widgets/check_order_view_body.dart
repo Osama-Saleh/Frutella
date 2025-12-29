@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit/core/helper/get_user_data.dart';
 import 'package:fruit/core/widgets/custom_elevated_button.dart';
 import 'package:fruit/features/card_view/card/card_cubit.dart';
+import 'package:fruit/features/check_order/presentation/cubit/check_order_cubit.dart';
 import 'package:fruit/features/check_order/presentation/module/check_order.dart';
 import 'package:fruit/features/check_order/presentation/module/check_order_address_model.dart';
-import 'package:fruit/features/check_order/presentation/module/check_order_model.dart';
+import 'package:fruit/features/check_order/presentation/module/check_order_entity.dart';
 import 'package:fruit/features/check_order/presentation/widgets/steps_item.dart';
 
 class CheckOrderViewBody extends StatefulWidget {
@@ -16,8 +18,9 @@ class CheckOrderViewBody extends StatefulWidget {
 class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
   late PageController? pageController;
   int selectedShippingIndex = -1;
-  CheckOrderModel checkOrderModel = CheckOrderModel(
+  CheckOrderEntity checkOrderEntity = CheckOrderEntity(
     cardItemEntitys: [],
+    userId: '',
   );
   TextEditingController? nameController;
 
@@ -30,6 +33,7 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
   TextEditingController? apartmentController;
 
   TextEditingController? phoneController;
+  var formStateKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -114,18 +118,18 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return CheckOrderSteps.checkOrderPages(
-                        onSelectionChanged: (value) {
-                          selectedShippingIndex = value;
-                          setState(() {});
-                        },
-                        checkOrderModel: checkOrderModel,
-                        nameController: nameController,
-                        emailController: emailController,
-                        addressController: addressController,
-                        cityController: cityController,
-                        apartmentController: apartmentController,
-                        phoneController: phoneController,
-                      )[index];
+                          onSelectionChanged: (value) {
+                            selectedShippingIndex = value;
+                            setState(() {});
+                          },
+                          checkOrderEntity: checkOrderEntity,
+                          nameController: nameController,
+                          emailController: emailController,
+                          addressController: addressController,
+                          cityController: cityController,
+                          apartmentController: apartmentController,
+                          phoneController: phoneController,
+                          formStateKey: formStateKey)[index];
                     },
                   ),
                 ),
@@ -137,11 +141,12 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
                         : 0),
                 onPressed: () {
                   if (selectedShippingIndex >= 0) {
-                    checkOrderModel = CheckOrderModel(
+                    checkOrderEntity = CheckOrderEntity(
                       cardItemEntitys:
                           context.read<CardItemCubit>().state.cardItemEntitys,
                       isCache: selectedShippingIndex == 0 ? true : false,
-                      checkOrderAddressModel: CheckOrderAddressModel(
+                      userId: GetUserData().uid,
+                      checkOrderAddressEntity: CheckOrderAddressEntity(
                         name: nameController?.text ?? '',
                         mail: emailController?.text ?? '',
                         adress: addressController?.text ?? '',
@@ -150,6 +155,18 @@ class _CheckOrderViewBodyState extends State<CheckOrderViewBody> {
                         phone: phoneController?.text ?? '',
                       ),
                     );
+                    if (pageController!.page!.toInt() == 1) {
+                      if (!(formStateKey.currentState?.validate() ?? false)) {
+                        return;
+                      }
+                    }
+                    if (pageController!.page!.toInt() == 2) {
+                      context
+                          .read<CheckOrderCubit>()
+                          .addOrder(checkOrderEntity: checkOrderEntity);
+                      return;
+                    }
+
                     pageController!.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeInOut);

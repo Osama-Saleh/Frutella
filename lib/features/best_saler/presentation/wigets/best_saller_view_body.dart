@@ -50,7 +50,7 @@ class BestSallerViewBody extends StatelessWidget {
               );
             } else if (state.productFailure) {
               return SliverToBoxAdapter(
-                  child: CustomErrorMessage(
+                  child: ShowErrorMessage(
                       errorMessage: 'Failed to load products'));
             }
             return Skeletonizer.sliver(

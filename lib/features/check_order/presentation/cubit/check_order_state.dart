@@ -1,37 +1,22 @@
 part of 'check_order_cubit.dart';
+enum CheckOrderStatus { initial, loading, success, failure }
 class CheckOrderState {
-  final String name;
-  final String email;
-  final String address;
-  final String city;
-  final String apartment;
-  final String phone;
+  final CheckOrderStatus checkOrderStatus;
+  final String? errorMessage;
 
-  const CheckOrderState({
-    this.name = '',
-    this.email = '',
-    this.address = '',
-    this.city = '',
-    this.apartment = '',
-    this.phone = '',
+   CheckOrderState({
+    this.checkOrderStatus = CheckOrderStatus.initial,
+    this.errorMessage,
   });
 
+
   CheckOrderState copyWith({
-    String? name,
-    String? email,
-    String? address,
-    String? city,
-    String? apartment,
-    String? phone,
+    CheckOrderStatus? checkOrderStatus,
+    String? errorMessage,
   }) {
     return CheckOrderState(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      address: address ?? this.address,
-      city: city ?? this.city,
-      apartment: apartment ?? this.apartment,
-      phone: phone ?? this.phone,
+      checkOrderStatus: checkOrderStatus ?? this.checkOrderStatus,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }
-

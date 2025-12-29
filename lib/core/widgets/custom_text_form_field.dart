@@ -27,9 +27,9 @@ class CustomTextFormFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      // validator: validator,
-      validator: (value){
-        if(value == null || value.isEmpty){
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
           return 'هذا الحقل مطلوب';
         }
         return null;

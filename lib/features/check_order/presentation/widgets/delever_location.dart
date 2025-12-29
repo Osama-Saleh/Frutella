@@ -7,10 +7,10 @@ import 'package:fruit/core/utils/app_text_styles.dart';
 import 'package:fruit/features/check_order/presentation/module/check_order_address_model.dart';
 
 class DeleverLocation extends StatelessWidget {
-  final CheckOrderAddressModel checkOrderAddressModel;
+  final CheckOrderAddressEntity checkOrderAddressEntity;
   const DeleverLocation({
     super.key,
-    required this.checkOrderAddressModel,
+    required this.checkOrderAddressEntity,
   });
 
   @override
@@ -31,9 +31,11 @@ class DeleverLocation extends StatelessWidget {
             spacing: 8.w,
             children: [
               SvgPicture.asset(Assets.imagesHomeLocationLogo),
-              Text(
-                '${checkOrderAddressModel.adress} , ${checkOrderAddressModel.city} , ${checkOrderAddressModel.adressDetails}',
-                style: AppTextStyles.regular13,
+              Flexible(
+                child: Text(
+                  '${checkOrderAddressEntity.adress} , ${checkOrderAddressEntity.city} , ${checkOrderAddressEntity.adressDetails}',
+                  style: AppTextStyles.regular13,
+                ),
               ),
               Spacer(),
               GestureDetector(
